@@ -1,13 +1,14 @@
 :root {
     color-scheme: light;
     font-family: "Segoe UI", Arial, sans-serif;
-    color: #1d3028;
-    background: #f5f7f2;
+    color: #24213b;
+    background: #f3f0ff;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    --green: #245c43;
-    --muted: #829087;
+    --purple: #6745d5;
+    --purple-dark: #4f32b6;
+    --muted: #77738d;
 }
 
 * {
@@ -19,8 +20,9 @@ body {
     min-height: 100vh;
     margin: 0;
     background:
-        radial-gradient(ellipse at 50% 0%, rgba(216, 231, 210, 0.62), transparent 44%),
-        #f5f7f2;
+        radial-gradient(ellipse at 82% 17%, rgba(216, 205, 255, 0.6), transparent 34%),
+        radial-gradient(ellipse at 4% 92%, rgba(255, 226, 239, 0.6), transparent 32%),
+        #f3f0ff;
 }
 
 button {
@@ -28,35 +30,43 @@ button {
 }
 
 .page {
-    width: min(100% - 40px, 480px);
+    width: min(100% - 48px, 1120px);
     min-height: 100vh;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
 
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(104, 79, 174, 0.12);
+}
+
 .brand {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 34px 0 24px;
+    flex-shrink: 0;
 }
 
 .brand-mark {
     display: grid;
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     place-items: center;
-    border-radius: 15px;
-    background: var(--green);
+    border-radius: 16px;
+    background: var(--purple);
     color: white;
     font: 800 24px "Segoe UI", Arial, sans-serif;
-    text-decoration: none;
-    box-shadow: 0 6px 14px rgba(36, 92, 67, 0.17);
+    box-shadow: 0 8px 18px rgba(103, 69, 213, 0.24);
 }
 
 .eyebrow {
-    margin: 0 0 3px;
+    margin: 0 0 6px;
     color: var(--muted);
     font-size: 10px;
     font-weight: 700;
@@ -64,6 +74,7 @@ button {
 }
 
 .brand h1,
+.intro h2,
 .calculator-heading h2 {
     margin: 0;
     font-family: "Segoe UI", Arial, sans-serif;
@@ -71,64 +82,147 @@ button {
 }
 
 .brand h1 {
-    font-size: 18px;
+    font-size: 19px;
+    letter-spacing: -0.03em;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #66617d;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.nav-item {
+    padding: 10px 15px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.nav-item.is-current {
+    background: #e7e0ff;
+    color: var(--purple-dark);
+}
+
+.content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 430px);
+    align-items: center;
+    gap: clamp(48px, 9vw, 128px);
+    flex: 1;
+    padding: 64px 0;
+}
+
+.intro {
+    max-width: 510px;
+}
+
+.intro-eyebrow {
+    margin-bottom: 18px;
+    color: var(--purple);
+}
+
+.intro h2 {
+    font-size: clamp(46px, 6vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.065em;
+}
+
+.intro h2 span {
+    color: var(--purple);
+}
+
+.intro-description {
+    max-width: 430px;
+    margin: 24px 0 0;
+    color: #68647c;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.intro-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    color: #514d68;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.note-icon {
+    display: grid;
+    width: 30px;
+    height: 30px;
+    place-items: center;
+    border-radius: 10px;
+    background: #e7e0ff;
+    color: var(--purple);
+    font-size: 16px;
 }
 
 .calculator {
-    margin: auto 0;
-    padding: 30px;
-    border: 1px solid rgba(222, 229, 220, 0.85);
-    border-radius: 28px;
+    width: 100%;
+    padding: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 30px;
     background: rgba(255, 255, 255, 0.88);
-    box-shadow: 0 24px 70px rgba(36, 58, 45, 0.09);
+    box-shadow: 0 28px 80px rgba(61, 43, 123, 0.14);
+    backdrop-filter: blur(12px);
 }
 
 .calculator-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 25px;
+    margin-bottom: 22px;
+}
+
+.calculator-heading .eyebrow {
+    color: #89849f;
 }
 
 .calculator-heading h2 {
-    font-size: 21px;
+    font-size: 22px;
     letter-spacing: -0.04em;
 }
 
 .calculator-icon {
     display: grid;
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     place-items: center;
-    border-radius: 13px;
-    background: #edf4eb;
-    color: var(--green);
+    border-radius: 14px;
+    background: #eee9ff;
+    color: var(--purple);
     font-size: 24px;
 }
 
 .display {
-    min-height: 122px;
-    margin-bottom: 18px;
+    min-height: 126px;
+    margin-bottom: 16px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-end;
     overflow: hidden;
-    border-radius: 18px;
-    background: #f4f7f2;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #34265f, #6044b4);
 }
 
 .display-label {
     margin: 0 0 7px;
-    color: var(--muted);
+    color: rgba(255, 255, 255, 0.66);
     font-size: 12px;
 }
 
 .display-value {
     max-width: 100%;
     overflow: hidden;
-    color: #1d3028;
+    color: #fff;
     font: 600 clamp(34px, 10vw, 46px)/1.1 "Segoe UI", Arial, sans-serif;
     letter-spacing: -0.06em;
     text-overflow: ellipsis;
@@ -142,11 +236,11 @@ button {
 }
 
 .key {
-    min-height: 62px;
+    min-height: 60px;
     border: 0;
     border-radius: 16px;
-    background: #f5f6f4;
-    color: #24352d;
+    background: #f5f3fa;
+    color: #302c45;
     cursor: pointer;
     font-size: 20px;
     font-weight: 600;
@@ -155,34 +249,33 @@ button {
 }
 
 .key:hover {
-    background: #eaf0e8;
+    background: #ebe6f8;
 }
 
 .key:active {
     transform: scale(0.96);
 }
 
-.key:focus-visible,
-.brand-mark:focus-visible {
-    outline: 3px solid #8eaf91;
+.key:focus-visible {
+    outline: 3px solid #a48aef;
     outline-offset: 3px;
 }
 
 .key-utility {
-    background: #edf2eb;
-    color: var(--green);
+    background: #eee9fb;
+    color: var(--purple-dark);
     font-size: 17px;
 }
 
 .key-operator {
-    background: #edf4eb;
-    color: var(--green);
+    background: #eee9fb;
+    color: var(--purple);
     font-size: 23px;
 }
 
 .key-operator.is-selected {
-    background: #dcebd8;
-    box-shadow: inset 0 0 0 1px rgba(36, 92, 67, 0.14);
+    background: #ded4ff;
+    box-shadow: inset 0 0 0 1px rgba(103, 69, 213, 0.2);
 }
 
 .key-zero {
@@ -190,45 +283,94 @@ button {
 }
 
 .key-equals {
-    background: var(--green);
+    background: var(--purple);
     color: #fff;
     font-size: 24px;
+    box-shadow: 0 7px 16px rgba(103, 69, 213, 0.2);
 }
 
 .key-equals:hover {
-    background: #1d4e38;
+    background: var(--purple-dark);
 }
 
 .keyboard-hint {
-    margin: 18px 0 0;
-    color: var(--muted);
+    margin: 17px 0 0;
+    color: #89849f;
     font-size: 12px;
     text-align: center;
 }
 
 footer {
-    padding: 25px 0 30px;
-    color: var(--muted);
+    padding: 20px 0 26px;
+    color: #77738d;
     font-size: 12px;
     text-align: center;
 }
 
-footer strong {
-    color: var(--green);
+footer span {
+    margin-left: 4px;
+    color: var(--purple);
 }
 
-@media (max-width: 420px) {
-    .page {
-        width: min(100% - 28px, 480px);
+@media (max-width: 760px) {
+    .content {
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+        gap: 32px;
+        padding: 48px 0;
     }
 
-    .brand {
-        padding-top: 22px;
+    .intro h2 {
+        font-size: clamp(42px, 7vw, 58px);
+    }
+
+    .calculator {
+        padding: 22px;
+    }
+}
+
+@media (max-width: 620px) {
+    .page {
+        width: min(100% - 32px, 440px);
+    }
+
+    .site-header {
+        flex-wrap: wrap;
+        padding: 20px 0;
+    }
+
+    .main-nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 0;
+        font-size: 12px;
+    }
+
+    .nav-item {
+        padding: 9px 12px;
+    }
+
+    .content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+        padding: 38px 0;
+    }
+
+    .intro h2 {
+        font-size: clamp(48px, 12vw, 64px);
+    }
+
+    .intro-description {
+        margin-top: 16px;
+        font-size: 15px;
+    }
+
+    .intro-note {
+        margin-top: 20px;
     }
 
     .calculator {
         padding: 22px 18px;
-        border-radius: 24px;
+        border-radius: 26px;
     }
 
     .keypad {
@@ -236,7 +378,7 @@ footer strong {
     }
 
     .key {
-        min-height: 58px;
+        min-height: 56px;
         border-radius: 14px;
     }
 }
